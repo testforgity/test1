@@ -32,9 +32,9 @@ def click_share():
     treeModified = create_treeModified()
     build_tree(treeModified, take_modified_path())
 
-    repo.index.commit(text.get("1.0", 'end-1c')) #'Testing javaman\'s program'
+    t = repo.index.commit(text.get("1.0", 'end-1c')) #'Testing javaman\'s program'
     origin = repo.remote(name='test')
-    origin.push()
+    origin.push(t)
     # tree.insert('', END, values=(text.get("1.0", 'end-1c'),))
     # tree.config(height=len(tree.get_children()))
     # print(tree.selection())
