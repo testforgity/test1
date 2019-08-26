@@ -5,6 +5,7 @@ from git import Repo
 def click_share():
     global treeAdded
     global treeModified
+    global text
     # git add
     # git commit -m
     # git push
@@ -33,10 +34,18 @@ def click_share():
     build_tree(treeModified, take_modified_path())
 
     repo.index.commit(text.get("1.0", 'end-1c')) #'Testing javaman\'s program'
+    text.destroy()
+    text = create_text()
     repo.remote(name='test').push()
     # tree.insert('', END, values=(text.get("1.0", 'end-1c'),))
     # tree.config(height=len(tree.get_children()))
     # print(tree.selection())
+
+
+def create_text():
+    text = Text(frame_commit, height=5, width=55)
+    text.pack(side=BOTTOM)
+    return text
 
 
 def create_treeAdded():
