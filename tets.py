@@ -118,8 +118,7 @@ def take_modified_path():
 
 #fixme treeModified
 
-path_to_directory = 'C:\\Users\\practic\Desktop\\gg'
-#'C:\Users\practic\Desktop\test'
+path_to_directory = 'C:\\Users\\practic\\Desktop\\test' #'C:\\Users\\practic\Desktop\\gg' - было
 repo = Repo(path_to_directory)
 modified = take_modified_path() #modified.pop().a_path
 print(modified)
