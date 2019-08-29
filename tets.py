@@ -28,7 +28,7 @@ def click_share():
     treeModified = create_treeModified()
     build_tree(treeModified, take_modified_path())
 
-    repo.index.commit(text.get("1.0", 'end-1c')) #'Testing javaman\'s program'
+    repo.index.commit(text.get("1.0", 'end-1c')) #'Testing javaman's program'
     text.destroy()
     text = create_text()
     repo.remote(name='test').push()
@@ -112,7 +112,7 @@ def take_modified_path():
     return helper
 
 
-path_to_directory = 'C:\\Users\\practic\\Desktop\\test' #'C:\\Users\\practic\Desktop\\gg' - было
+path_to_directory = 'C:\\Users\\practic\Desktop\\gg' #'C:\\Users\\practic\\Desktop\\test'# - было
 repo = Repo(path_to_directory)
 modified = take_modified_path() #modified.pop().a_path
 print(modified)
