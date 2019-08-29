@@ -1,5 +1,4 @@
 from setuptools import setup
-
 setup(
     name='CommitMaster',
     version='0.0.1',
