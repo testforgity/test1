@@ -6,11 +6,6 @@ def click_share():
     global treeAdded
     global treeModified
     global text
-    # git add
-    # git commit -m
-    # git push
-    #print(text.get("1.0", 'end-1c'))
-    #print(len(text.get("1.0", 'end-1c')))
     for t in treeAdded.selection():
         if treeAdded.get_children(t):
             add_child(treeAdded, t)
@@ -37,15 +32,16 @@ def click_share():
     text.destroy()
     text = create_text()
     repo.remote(name='test').push()
-    # tree.insert('', END, values=(text.get("1.0", 'end-1c'),))
-    # tree.config(height=len(tree.get_children()))
-    # print(tree.selection())
 
 
 def create_text():
     text = Text(frame_commit, height=5, width=55)
     text.pack(side=BOTTOM)
     return text
+
+
+def createLabel():
+    Label(root, width=100).pack(side=BOTTOM)
 
 
 def create_treeAdded():
@@ -116,8 +112,6 @@ def take_modified_path():
     return helper
 
 
-#fixme treeModified
-
 path_to_directory = 'C:\\Users\\practic\\Desktop\\test' #'C:\\Users\\practic\Desktop\\gg' - было
 repo = Repo(path_to_directory)
 modified = take_modified_path() #modified.pop().a_path
@@ -127,7 +121,7 @@ root = Tk()
 root.title("CommitMaster")
 root.geometry("800x600")
 
-Label(root, width=100).pack(side=BOTTOM)
+createLabel()
 
 frame_push = Frame(root)
 frame_push.pack(side=BOTTOM)
@@ -141,7 +135,7 @@ infoLabel.pack(side=BOTTOM)
 frame_added = Frame(root)
 frame_added.pack(side=BOTTOM)
 
-Label(root, width=100).pack(side=BOTTOM)
+createLabel()
 
 frame_modified = Frame(root)
 frame_modified.pack(side=BOTTOM)
@@ -156,18 +150,12 @@ lbl1.pack(side=BOTTOM)
 
 text.pack(side=BOTTOM)
 
-# boxAdded = Combobox(frame_added, height=5)
-# boxAdded['values'] = ['Новые файлы'] # вытащить все new файлы
-# boxAdded.pack(side=TOP)
 treeAdded = create_treeAdded()
 build_tree(treeAdded, repo.untracked_files)
 
 label_added = Label(frame_added)
 label_added.pack(side=TOP)
 
-# boxChanged = Combobox(frame_modified, height=5)
-# boxChanged['values'] = ['Изменения'] # вытащить все modified файлы
-# boxChanged.pack(side=TOP)
 
 treeModified = Treeview(frame_modified)
 treeModified.heading('#0', text='Измененные файлы:')
@@ -176,10 +164,6 @@ build_tree(treeModified, modified)
 label_changed = Label(frame_modified)
 label_changed.pack(side=TOP)
 
-# tree = Treeview(root, show='headings')
-# tree["columns"] = ['Changes']
-# tree.heading('Changes', text='Изменения')
-# tree.pack()
 
 
 root.mainloop()
